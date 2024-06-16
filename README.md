@@ -38,5 +38,6 @@ To view the results use tensorboard from outside the container. E.g. `tensorboar
 	- `pip install pycall`
 	- `pip install julia`
 	- `pip install hnswlib`
+8. Copy the contents of sgm-modulus to /modulus/modulus `cp -r /sgm-modulus/* /modulus/modulus/` or run `. /sgm-modulus/load-SGM-PINN-SPADE.sh`
 
 For convenience a script 'dEnter' is included to enter the most recently started container.

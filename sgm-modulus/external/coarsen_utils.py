@@ -153,7 +153,6 @@ def getMappingCore_weighted_fast_modulus(P, cluster_subset, cluster_values, sMin
     n_data = np.zeros((P.shape[1])) #final number of clusters
     while idx < stop:
         stepSize = cluster_subset[idx][3] #steps to the beginning of the next cluster
-        ##TODO any other normalization or accounting for different cluster sizes? (clusterMap[1])
         n_data[step] = np.sum(cluster_values[idx:idx+stepSize]) #summing values from this step's cluster
         if avg:
             n_data[step] = n_data[step]/cluster_subset[idx][1]

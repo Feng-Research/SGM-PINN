@@ -11,8 +11,6 @@ import os
 def spade(data_input, data_output, k=10, num_eigs=2,
           sparse=False,weighted=False,
           wID = -1, backups = 4):
-    ##TODO if K needed to be raised
-    ##TODO Check for overrides.log?
 
     print(f'{wID} SPADE in K: {k}, NUM EIGS: {num_eigs}')
     neighs_in, distance_in = hnsw(data_input, k)

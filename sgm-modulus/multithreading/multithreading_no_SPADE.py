@@ -20,7 +20,7 @@ def worker_HyperEF_fn(wID,
                         graph_vars):
         JLoad = C_HyperEF()
         start = time.time()
-        count = 0 ##TODO Change this to keep track of # of runs
+        count = 0 
         print("Opened",flush=True)
         while True:
             try:

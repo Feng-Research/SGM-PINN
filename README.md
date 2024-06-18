@@ -8,18 +8,18 @@ and https://github.com/Feng-Research/HyperEF
 ## Usage
 Interact within a docker environment based on the 22.09 container. Full requirements and install guide for the container is [here](https://docs.nvidia.com/deeplearning/modulus/modulus-v2209/user_guide/getting_started/installation.html#install-the-docker-engine) with abbreviated instructions below. 
 
-After following the installation below, from within the container you can navigate to `cd /sgm-examples/` and run any of the .py files within. 
+After following the installation below, from within the container you can navigate to `cd /sgm-examples/` and run any of the .py files within using `python <file>.py`
 
-To view the results use tensorboard from outside the container. E.g. `tensorboard --logdir=./sgm-examples/ldc --port=7007` and open a web browser at localhost:7007.
+To view the results use tensorboard from outside the container. E.g. `tensorboard --logdir=./sgm-examples/ldc --port=7007` and open a web browser at localhost:7007. Scripts labelled `tb_...sh` are provided.
 
 ## Installation (Ubuntu 20.04 or later)
 1. [Ensure the docker engine in installed.](https://docs.docker.com/engine/install/ubuntu/)
 2.  Install the baseline image
   - ```sudo apt-get install nvidia-docker2```
-  - `docker pull nvcr.io/nvidia/modulus/modulus:``22.09`
+  - `docker pull nvcr.io/nvidia/modulus/modulus:22.09`
 3. **Clone** this repository to a working directory of your choice.
 4. Open a terminal **in the working directory.**
-5. Create and enter a persistent container to install the remaining requirements.
+5. Create and enter a persistent container to install the remaining requirements, also mounts the folders sgm-examples and sgm-modulus from the current directory.
 ```
     docker run --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 \
     --runtime nvidia -v ${PWD}/sgm-examples:/sgm-examples \
@@ -39,5 +39,6 @@ To view the results use tensorboard from outside the container. E.g. `tensorboar
 	- `pip install julia`
 	- `pip install hnswlib`
 8. Copy the contents of sgm-modulus to /modulus/modulus `cp -r /sgm-modulus/* /modulus/modulus/` or run `. /sgm-modulus/load-SGM-PINN-SPADE.sh`
+9. Due to a bug with PyJulia and multiprocessing, sometimes errors will be thrown at the end of training. This will be updated in a future release by implementing all code in python, but does not affect results.
 
 For convenience a script 'dEnter' is included to enter the most recently started container.
